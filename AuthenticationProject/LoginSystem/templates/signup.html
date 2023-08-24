@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+      Signup
+{% endblock title%}
+
+{% block body %}
+
+      {% if messages %}
+             {% for message in messages %}
+                    <div class="alert alert-{{message.tags}} alert-dismissible" >
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong></strong>{{message}}
+                    </div>
+            {% endfor %}
+        {% endif %}
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form  action="{% url 'signup' %}" method="post">
+        {% csrf_token %}
+
+        <h2>Signup Here</h2>
+        <label for="username">Username</label>
+        <input type="text" placeholder="Enter Username" name="username" id="username">
+
+        <label for="email">Email</label>
+        <input type="email" placeholder="Enter Email" name="email" id="email">
+
+        <label for="password1">Password</label>
+        <input type="password" placeholder="Enter Password" id="password1" name="password">
+
+        <label for="password2">Confirm Password</label>
+        <input type="password" placeholder="Enter Confirm Password" id="password2" name="confirm_password">
+        <button type="submit">Signup</button>
+        <label>Already User? <a class="text" href="{% url 'login' %}">Login</a> </label>
+
+
+
+    </form>
+{% endblock body %}

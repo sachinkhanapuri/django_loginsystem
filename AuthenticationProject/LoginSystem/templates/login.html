@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+      Login
+{% endblock title%}
+
+
+
+{% block body %}
+        {% if messages %}
+             {% for message in messages %}
+                    <div class="alert alert-{{message.tags}} alert-dismissible" >
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong></strong>{{message}}
+                    </div>
+            {% endfor %}
+        {% endif %}
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form class="desgin" action="{% url 'login' %}" method="post">
+        <h3>Login Here</h3>
+        {% csrf_token %}
+        <label for="username">Username</label>
+        <input type="text" placeholder="Enter Username" id="username" name="username">
+
+        <label for="password">Password</label>
+        <input type="password" placeholder="Enter Password" id="password" name="pass">
+
+        <button type="submit">Log In</button>
+        <!-- <input type="button" value=""> -->
+        <!-- <div class="social">
+          <div class="go"><i class="fab fa-google"></i>  Google</div>
+          <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
+        </div> -->
+        <label>Not a User? <a class="text" href="{% url 'signup' %}">Signup</a></label>
+        <a class="text" href="{% url 'forgetpassword' %}">Forget Password</a>
+    </form>
+{% endblock body %}

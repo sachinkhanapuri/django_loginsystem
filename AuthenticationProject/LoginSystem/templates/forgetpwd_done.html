@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+      Reset password
+{% endblock title%}
+
+{% block body %}
+     {% if messages %}
+             {% for message in messages %}
+                    <div class="alert alert-{{message.tags}} alert-dismissible" >
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong></strong>{{message}}
+                    </div>
+            {% endfor %}
+        {% endif %}
+
+   <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form class="desgin3" action="#" method="post">
+        <h3>Forget Password</h3>
+        {% csrf_token %}
+        <label for="password">New Password</label>
+        <input type="password" placeholder="Enter new password" name="new_password">
+
+       <label for="password">Confirm Password</label>
+        <input type="password" placeholder="Enter confirm password" name="confirm_password">
+
+          <button type="submit">Submit</button>
+    </form>
+{% endblock body %}
